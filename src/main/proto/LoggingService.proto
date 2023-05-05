@@ -1,0 +1,21 @@
+syntax = "proto3";
+option java_multiple_files = true;
+package com.app.travel.service.events;
+
+message LoggingRequest {
+  string timestamp = 1;
+  string microserviceName = 2;
+  string actionType = 3;
+  string resourceName = 4;
+  string statusCode = 5;
+}
+
+
+message LoggingResponse {
+  string success = 1;
+}
+
+
+service LoggingService {
+  rpc log(LoggingRequest) returns (LoggingResponse);
+}

@@ -1,13 +1,17 @@
 package com.app.travel.service.events;
 
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
+import io.grpc.Server;
+import io.grpc.ServerBuilder;
 
-@SpringBootApplication
+import java.io.IOException;
+
 public class EventsApplication {
+	public static void main(String[] args) throws IOException, InterruptedException {
+		Server server = ServerBuilder
+				.forPort(8080)
+				.addService(new LoggingServiceImpl()).build();
 
-	public static void main(String[] args) {
-		SpringApplication.run(EventsApplication.class, args);
+		server.start();
+		server.awaitTermination();
 	}
-
 }
