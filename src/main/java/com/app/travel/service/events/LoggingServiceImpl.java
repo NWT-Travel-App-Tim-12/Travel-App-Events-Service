@@ -9,6 +9,8 @@ public class LoggingServiceImpl extends LoggingServiceGrpc.LoggingServiceImplBas
     public void log(
             LoggingRequest request, StreamObserver<LoggingResponse> responseObserver) {
 
+        System.out.println("entered log method");
+
         String greeting = new StringBuilder()
                 .append("Hello, ")
                 .append(request.getTimestamp())
